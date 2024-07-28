@@ -148,5 +148,7 @@ unset __conda_setup
 
 # this is get the id if the touch pad and set the touch pad settings 
 export touch_pad_id=$(xinput list | grep Touch | sed 's/.*id=\([0-9]*\).*/\1/')
-xinput set-prop $touch_pad_id 316 1
-xinput set-prop $touch_pad_id 337 1
+if [ $(($touch_pad_id)) -gt 0 ]; then
+  xinput set-prop $touch_pad_id 316 1
+  xinput set-prop $touch_pad_id 337 1
+fi
