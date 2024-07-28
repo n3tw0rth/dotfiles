@@ -1,0 +1,21 @@
+[global_config]
+  borderless = True
+  extra_styling = False
+[keybindings]
+[profiles]
+  [[default]]
+    background_darkness = 0.87
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    font = JetBrainsMono Nerd Font Bold 10
+    show_titlebar = False
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
