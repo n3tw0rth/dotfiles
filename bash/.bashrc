@@ -145,10 +145,23 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 
+# to duplicate the monitors when there are more than one monitor connnected
+# xrandr --output HDMI-1 --auto --output eDP-1 --auto --same-as HDMI-1
+# Automatically mirror displays if a second monitor is connected
+if command -v xrandr > /dev/null; then
+    # Get the primary monitor (first connected monitor)
+    PRIMARY_MONITOR=$(xrandr | grep " connected primary" | cut -d' ' -f1)
+    
+    # If no primary monitor is found, find the first connected monitor
+    if [ -z "$PRIMARY_MONITOR" ]; then
+        PRIMARY_MONITOR=$(xrandr | grep " connected" | head -n 1 | cut -d' ' -f1)
+    fi
 
-# this is get the id if the touch pad and set the touch pad settings 
-export touch_pad_id=$(xinput list | grep Touch | sed 's/.*id=\([0-9]*\).*/\1/')
-if [ $(($touch_pad_id)) -gt 0 ]; then
-  xinput set-prop $touch_pad_id 316 1
-  xinput set-prop $touch_pad_id 337 1
+    # Get the second connected monitor (if any)
+    SECONDARY_MONITOR=$(xrandr | grep " connected" | grep -v "$PRIMARY_MONITOR" | head -n 1 | cut -d' ' -f1)
+
+    # If both monitors are connected, mirror the primary monitor to the secondary
+    if [ -n "$SECONDARY_MONITOR" ]; then
+        xrandr --output "$PRIMARY_MONITOR" --auto --output "$SECONDARY_MONITOR" --auto --same-as "$PRIMARY_MONITOR"
+    fi
 fi
