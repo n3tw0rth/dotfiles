@@ -165,6 +165,3 @@ if command -v xrandr > /dev/null; then
         xrandr --output "$PRIMARY_MONITOR" --auto --output "$SECONDARY_MONITOR" --auto --same-as "$PRIMARY_MONITOR"
     fi
 fi
-
-# run ssh-agent on load
-eval `ssh-agent -s`
