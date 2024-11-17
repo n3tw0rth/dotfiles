@@ -1,0 +1,50 @@
+#[user]
+#label=
+#command=lslogins | grep $USER | awk '{print $5,$NF}'
+#interval=once
+
+[volume]
+command=~/.config/i3blocks/scripts/audio.sh
+interval=1
+
+[cpu]
+command=~/.config/i3blocks/scripts/cpu.sh
+interval=5
+label=
+separator_block_width=20
+
+[ram]
+command=~/.config/i3blocks/scripts/memory.sh
+interval=30
+label=MEM
+color=#05ffe4
+separator_block_width=20
+
+[battery]
+command=~/.config/i3blocks/scripts/battery
+markup=pango
+interval=30
+#BAT_NUMBER=0
+separator_block_width=20
+
+[disk]
+command=df -h / | awk '/\// {printf " %s/%s (%s)", $4, $2, $5}'
+interval=60
+label=
+
+#[kubernetes]
+#command=~/.config/i3blocks/scripts/k8s.sh
+#interval=10
+
+# Query my default IP address only on startup
+[ip]
+command=hostname -i | awk '{ print "IP:" $3 }'
+interval=once
+color=#91E78B
+
+# Update time every 5 seconds
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=5
+
+
