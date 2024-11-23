@@ -80,9 +80,4 @@ return {
     "kmontocam/nvim-conda",
     dependencies = { "nvim-lua/plenary.nvim" },
   },
-  {
-    'aliqyan-21/darkvoid.nvim',
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    enabled = true,
-  }
 }
