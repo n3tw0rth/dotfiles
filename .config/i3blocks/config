@@ -5,20 +5,44 @@
 
 [volume]
 command=~/.config/i3blocks/scripts/audio.sh
-interval=1
+interval=once
 
 [cpu]
 command=~/.config/i3blocks/scripts/cpu.sh
+label=CPU:
 interval=5
-label=
 separator_block_width=20
+markup=pango
 
 [ram]
+#command=echo "<span line_height='1.5' background='#87A2FF'><b>`echo MEM: $(~/.config/i3blocks/scripts/memory.sh)` </b></span>"
 command=~/.config/i3blocks/scripts/memory.sh
 interval=30
-label=MEM
-color=#05ffe4
 separator_block_width=20
+markup=pango
+
+[disk]
+# command=echo "<span line_height='1.5' background='#006A67'><b>`df -h / | awk '/\// {printf " Disk:%s/%s (%s)", $4, $2, $5}'` </b></span>"
+command=df -h / | awk '/\// {printf " Disk:%s/%s (%s)", $4, $2, $5}'
+interval=60
+markup=pango
+separator_block_width=20
+
+#[kubernetes]
+#command=~/.config/i3blocks/scripts/k8s.sh
+#interval=10
+
+[ip]
+# command=echo "<span line_height='1.5' background='#3498db'><b>`hostname -i | awk '{ print " IP:" $3 }'` </b></span>"
+command=hostname -I | awk '{ print "IP:" $1 }'
+markup=pango
+interval=once
+separator_block_width=20
+
+# Update time every 5 seconds
+[time]
+command=date '+%Y-%m-%d %H:%M:%S'
+interval=5
 
 [battery]
 command=~/.config/i3blocks/scripts/battery
@@ -26,25 +50,3 @@ markup=pango
 interval=30
 #BAT_NUMBER=0
 separator_block_width=20
-
-[disk]
-command=df -h / | awk '/\// {printf " %s/%s (%s)", $4, $2, $5}'
-interval=60
-label=
-
-#[kubernetes]
-#command=~/.config/i3blocks/scripts/k8s.sh
-#interval=10
-
-# Query my default IP address only on startup
-[ip]
-command=hostname -i | awk '{ print "IP:" $3 }'
-interval=once
-color=#91E78B
-
-# Update time every 5 seconds
-[time]
-command=date '+%Y-%m-%d %H:%M:%S'
-interval=5
-
-

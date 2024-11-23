@@ -9,6 +9,7 @@
     cursor_color = "#aaaaaa"
     font = JetBrainsMono Nerd Font Bold 10
     show_titlebar = False
+    scrollbar_position = hidden
     use_system_font = False
 [layouts]
   [[default]]

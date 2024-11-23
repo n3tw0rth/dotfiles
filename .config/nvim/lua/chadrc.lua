@@ -2,9 +2,9 @@
 -- https://github.com/NvChad/NvChad/blob/v2.5/lua/nvconfig.lua
 
 ---@type ChadrcConfig
-local M = {}
+local M               = {}
 
-M.ui = {
+M.ui                  = {
   theme = "monochrome",
   transparency = true,
 
@@ -17,5 +17,8 @@ M.ui = {
   -- 	["@comment"] = { italic = true },
   -- },
 }
+
+M.base46.theme        = "monochrome"
+M.base46.transparency = true
 
 return M

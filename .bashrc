@@ -166,5 +166,8 @@ if command -v xrandr > /dev/null; then
     fi
 fi
 
-# find files 
-alias find='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
+# Custom Aliases
+# alias find='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
+
+# Custom Binaries
+export PATH=~/.config/bash/bin/:$PATH

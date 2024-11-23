@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# to move between sessions when there are a lot
+
+SESSION_NAME="$(tmux ls 2>/dev/null | awk -F':' '{print $1}' | fzf-tmux -p)"
+
+tmux switch-client -t $SESSION_NAME
