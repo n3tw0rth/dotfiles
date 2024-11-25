@@ -27,12 +27,10 @@ return {
   "folke/trouble.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
-
     -- your configuration comes here
     -- or leave it empty to use the default settings
     -- refer to the configuration section below
   },
-  -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -75,9 +73,5 @@ return {
   },
   {
     "nvim-lua/plenary.nvim"
-  },
-  {
-    "kmontocam/nvim-conda",
-    dependencies = { "nvim-lua/plenary.nvim" },
   },
 }

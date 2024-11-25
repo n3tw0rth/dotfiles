@@ -74,8 +74,6 @@ vim.filetype.add({
   }
 })
 
--- vim.cmd([[autocmd BufRead,BufNewFile *.templ setfiletype templ]])
---
 
 vim.api.nvim_create_autocmd('FileType', {
   -- This handler will fire when the buffer's 'filetype' is "python"
@@ -89,11 +87,10 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
-
--- lspconfig.useeless.setup({
---   cmd = { "/home/byt3z/projects/useless-lsp/target/debug/useless-lsp" }, -- Replace with the actual path to the binary
---   filetypes = { "feteched" },                                            -- Set supported file types
---   root_dir = vim.fn.getcwd(),
---   capabilities = capabilities,
---   on_attach = on_attach
--- })
+require("lspconfig").terraformls.setup {}
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  pattern = { "*.tf", "*.tfvars" },
+  callback = function()
+    vim.lsp.buf.format()
+  end,
+})

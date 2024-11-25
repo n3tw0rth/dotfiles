@@ -1,24 +1,29 @@
--- This file  needs to have same structure as nvconfig.lua
--- https://github.com/NvChad/NvChad/blob/v2.5/lua/nvconfig.lua
+-- This file needs to have same structure as nvconfig.lua
+-- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
+--
+-- Please read that file to know all available options :(
 
 ---@type ChadrcConfig
-local M               = {}
+local M = {}
 
-M.ui                  = {
-  theme = "monochrome",
-  transparency = true,
-
+M.ui = {
   statusline = {
-    theme = "vscode"
+    theme = "vscode",
+  },
+  telescope = {
+    style = "bordered"
   }
-
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
 }
 
-M.base46.theme        = "monochrome"
-M.base46.transparency = true
+M.base46 = {
+  theme = "monochrome",
+
+  transparency = true,
+
+  hl_override = {
+    Comment = { italic = true },
+    ["@comment"] = { italic = true },
+  },
+}
 
 return M

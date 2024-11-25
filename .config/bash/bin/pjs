@@ -2,7 +2,7 @@
 
 # open projects in tmux if there are no current sessions
 
-PROJECT=$(find  ~/projects ~/ ~/surge/work/phg ~/surge/work/reader-scout  -mindepth 1 -maxdepth 1 -type d | fzf)
+PROJECT=$(find  ~/projects ~/ ~/surge/work/phg ~/surge/work/reader-scout  -mindepth 1 -maxdepth 1 -type d | fzf-tmux -p --reverse)
 
 if [ -n "$PROJECT" ]; then
     SESSION_NAME=$(basename $PROJECT)
