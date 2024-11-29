@@ -166,6 +166,11 @@ if command -v xrandr > /dev/null; then
     fi
 fi
 
+# keychains
+# eval `keychain --eval ~/.ssh/keys/ssh-key-surge`
+# eval `keychain --eval ~/.ssh/keys/rsa-key`
+# ssh-agent bash
+
 # Custom Aliases
 # alias find='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
 
