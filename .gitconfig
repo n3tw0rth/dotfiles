@@ -4,8 +4,9 @@
 [alias]
   co = checkout
   br = branch
-  ci = commit
+  cm = commit
   st = status
+  p = push
 ; [core]
 ;     pager = delta
 ;
