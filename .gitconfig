@@ -6,7 +6,10 @@
   br = branch
   cm = commit
   st = status
-  p = push
+  pu = push
+  pl = pull
+  d = diff
+  a = add --all
 ; [core]
 ;     pager = delta
 ;
