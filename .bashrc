@@ -87,10 +87,11 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+alias rg='rg --hidden'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -141,9 +142,6 @@ else
 fi
 unset __conda_setup
 
-
-# to duplicate the monitors when there are more than one monitor connnected
-# xrandr --output HDMI-1 --auto --output eDP-1 --auto --same-as HDMI-1
 # Automatically mirror displays if a second monitor is connected
 if command -v xrandr > /dev/null; then
     # Get the primary monitor (first connected monitor)

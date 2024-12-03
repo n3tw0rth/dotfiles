@@ -1,6 +1,11 @@
 [user]
 	email = theekshana.fernando@surge.global
   name = theekshana fernando
+[alias]
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
 ; [core]
 ;     pager = delta
 ;
