@@ -124,12 +124,10 @@ export NVM_DIR="$HOME/.nvm"
 
 # tmux
 export force_color_prompt=yes
-. "$HOME/.cargo/env"
 
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/usr/local/bin:$PATH
 
-# >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/byt3z/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
@@ -142,7 +140,6 @@ else
     fi
 fi
 unset __conda_setup
-# <<< conda initialize <<<
 
 
 # to duplicate the monitors when there are more than one monitor connnected
@@ -167,12 +164,14 @@ if command -v xrandr > /dev/null; then
 fi
 
 # keychains
-# eval `keychain --eval ~/.ssh/keys/ssh-key-surge`
-# eval `keychain --eval ~/.ssh/keys/rsa-key`
-# ssh-agent bash
+eval `keychain --eval ~/.ssh/id_rsa`
 
-# Custom Aliases
-# alias find='fd --type f --hidden --exclude .git | fzf-tmux -p --reverse | xargs nvim'
+# starship
+eval "$(starship init bash)"
+
+# disable brew auto updates
+HOMEBREW_NO_AUTO_UPDATE=1
 
 # Custom Binaries
 export PATH=~/.config/bash/bin/:$PATH
+. "$HOME/.cargo/env"
