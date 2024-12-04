@@ -162,7 +162,7 @@ if command -v xrandr > /dev/null; then
 fi
 
 # keychains
-eval `keychain --eval ~/.ssh/id_rsa`
+eval `keychain --eval ~/.ssh/id_rsa --quiet --quick`
 
 # starship
 eval "$(starship init bash)"
