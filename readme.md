@@ -1,6 +1,7 @@
 Apps and Tools
 
-- [ ]. Neovim - text editor
-- [ ]. i3wm - tiling window manager
-- [ ]. Firefox - web browser
+1. Neovim - text editor
+2. i3wm - tiling window manager
+3. Firefox - web browser
+
 
