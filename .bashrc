@@ -93,6 +93,7 @@ alias l='ls -CF'
 
 alias rg='rg --hidden'
 alias g='git'
+alias vi='nvim'
 
 # to enable completions for git with the alias
 source /usr/share/bash-completion/completions/git

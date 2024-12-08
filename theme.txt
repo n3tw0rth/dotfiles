@@ -1,4 +1,0 @@
-colour1: #9EDF9C
-colour2: #1A1A1D
-
-cursor: #AAAAAA
