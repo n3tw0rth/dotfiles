@@ -92,10 +92,13 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias rg='rg --hidden'
+alias g='git'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+# to enable completions for git with the alias
+source /usr/share/bash-completion/completions/git
+__git_complete g __git_main
+
+alias lgit='lazygit'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -168,7 +171,7 @@ eval `keychain --eval ~/.ssh/id_rsa --quiet --quick`
 eval "$(starship init bash)"
 
 # disable brew auto updates
-HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Custom Binaries
 export PATH=~/.config/bash/bin/:$PATH

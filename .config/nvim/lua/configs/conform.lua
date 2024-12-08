@@ -14,6 +14,7 @@ local options = {
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
     rust = { "prettier" },
+    yaml = { "prettier" }
   },
 
   format_on_save = {
