@@ -16,7 +16,7 @@ symbol = "❄️ "
 [directory]
 format = ' [$path]($style)[$read_only]($read_only_style) '
 home_symbol = '~'
-style = "blue"
+style = "#5B99C2"
 read_only = '🔒'
 
 [character]
@@ -47,17 +47,5 @@ format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
 
 [cmd_duration]
-format = "took [$duration]($style) "
-style = "yellow"
-
-[python]
-format = "[$virtualenv]($style) "
-style = "bright-black"
-
-[status]
-style = 'bg:blue'
-symbol = '🔴 '
-success_symbol = '🟢 SUCCESS'
-format = '[\[$symbol$common_meaning$signal_name$maybe_int\]]($style) '
-map_symbol = true
-disabled = false
+format = " took [$duration]($style) "
+style = "#41B3A2"
