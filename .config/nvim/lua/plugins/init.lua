@@ -1,11 +1,21 @@
 return {
   {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  }
+  ,
+  {
     "stevearc/conform.nvim",
     event = "BufWritePre", -- uncomment for format on save
     config = function()
       require "configs.conform"
     end,
   },
+  { "shortcuts/no-neck-pain.nvim", version = "*" },
+  { "ggandor/leap.nvim" },
   -- {
   --   "hrsh7th/nvim-cmp",
   --   dependencies = {
@@ -102,11 +112,11 @@ return {
       -- { "<leader>n",  function() Snacks.notifier.show_history() end,   desc = "Notification History" },
       -- { "<leader>bd", function() Snacks.bufdelete() end,               desc = "Delete Buffer" },
       { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-      -- { "<leader>gB", function() Snacks.gitbrowse() end, desc = "Git Browse" },
+      { "<leader>gB", function() Snacks.gitbrowse() end,          desc = "Git Browse" },
       -- { "<leader>gb", function() Snacks.git.blame_line() end,          desc = "Git Blame Line" },
-      -- { "<leader>gf", function() Snacks.lazygit.log_file() end,        desc = "Lazygit Current File History" },
-      -- { "<leader>gg", function() Snacks.lazygit() end,                 desc = "Lazygit" },
-      -- { "<leader>gl", function() Snacks.lazygit.log() end,             desc = "Lazygit Log (cwd)" },
+      { "<leader>gf", function() Snacks.lazygit.log_file() end,   desc = "Lazygit Current File History" },
+      { "<leader>gg", function() Snacks.lazygit() end,            desc = "Lazygit" },
+      { "<leader>gl", function() Snacks.lazygit.log() end,        desc = "Lazygit Log (cwd)" },
       -- { "<leader>un", function() Snacks.notifier.hide() end,           desc = "Dismiss All Notifications" },
       -- { "<c-/>",      function() Snacks.terminal() end,                desc = "Toggle Terminal" },
       -- { "<c-_>",      function() Snacks.terminal() end,                desc = "which_key_ignore" },

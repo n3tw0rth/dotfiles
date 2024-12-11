@@ -25,6 +25,15 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
+require("oil").setup({
+  default_file_explorer = false,
+  view_options = {
+    show_hidden = true,
+  }
+})
+
+-- require('leap').create_default_mappings()
+
 require("nvim-tree").setup {
   sort = {
     sorter = "case_sensitive",
