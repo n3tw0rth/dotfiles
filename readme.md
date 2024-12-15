@@ -31,6 +31,3 @@ Languages
     - yarn,pnpm
 - python
     - miniconda
-
-
-

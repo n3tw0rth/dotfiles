@@ -68,24 +68,24 @@ require('lspconfig').clangd.setup {
 
 --
 --
-vim.filetype.add({
-  extension = {
-    fheaders = "feteched",
-  }
-})
-
-
-vim.api.nvim_create_autocmd('FileType', {
-  -- This handler will fire when the buffer's 'filetype' is "python"
-  pattern = 'feteched',
-  callback = function(args)
-    vim.lsp.start({
-      name     = 'useless',
-      cmd      = { "/home/byt3z/projects/useless-lsp/target/debug/useless-lsp" }, -- Replace with the actual path to the binary
-      root_dir = vim.fs.root(0, { '.git' }),
-    })
-  end,
-})
+-- vim.filetype.add({
+--   extension = {
+--     fheaders = "feteched",
+--   }
+-- })
+--
+--
+-- vim.api.nvim_create_autocmd('FileType', {
+--   -- This handler will fire when the buffer's 'filetype' is "python"
+--   pattern = 'feteched',
+--   callback = function(args)
+--     vim.lsp.start({
+--       name     = 'useless',
+--       cmd      = { "/home/byt3z/projects/useless-lsp/target/debug/useless-lsp" }, -- Replace with the actual path to the binary
+--       root_dir = vim.fs.root(0, { '.git' }),
+--     })
+--   end,
+-- })
 
 require("lspconfig").terraformls.setup {}
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {

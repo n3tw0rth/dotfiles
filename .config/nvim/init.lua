@@ -32,7 +32,7 @@ require("oil").setup({
   }
 })
 
--- require('leap').create_default_mappings()
+require('leap').add_default_mappings()
 
 require("nvim-tree").setup {
   sort = {
