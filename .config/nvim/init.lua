@@ -14,41 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 local lazy_config = require "configs.lazy"
 
 -- load plugins
-require("lazy").setup({
-  {
-    "NvChad/NvChad",
-    lazy = false,
-    branch = "v2.5",
-    import = "nvchad.plugins",
-  },
-
-  { import = "plugins" },
-}, lazy_config)
-
-require("oil").setup({
-  default_file_explorer = false,
-  view_options = {
-    show_hidden = true,
-  }
-})
-
-require('leap').add_default_mappings()
-
-require("nvim-tree").setup {
-  sort = {
-    sorter = "case_sensitive",
-  },
-  view = {
-    cursorline = true,
-    width = 50,
-  },
-  renderer = {
-    group_empty = true,
-  },
-  filters = {
-    dotfiles = false,
-  },
-}
+require "setup"
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
