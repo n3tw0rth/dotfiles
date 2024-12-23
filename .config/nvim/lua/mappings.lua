@@ -5,6 +5,7 @@ local map = vim.keymap.set
 
 -- General
 map("n", ";", ":", { desc = "CMD enter command mode" })
+map("n", "<leader>gb", require("gitsigns").toggle_current_line_blame, { desc = "inline git blames" })
 map("i", "jk", "<ESC>")
 
 -- Replace
