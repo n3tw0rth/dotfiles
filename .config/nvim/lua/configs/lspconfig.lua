@@ -84,3 +84,21 @@ lspconfig.gopls.setup {
   on_init = on_init,
   capabilities = capabilities
 }
+
+--yamlls
+require("lspconfig").yamlls.setup {
+  -- settings = {
+  --   yaml = {
+  --     -- schemas = {
+  --     --   -- kubernetes = "*.{yml,yaml}",
+  --     --   -- add istio
+  --     --   -- ["https://github.com/snowdrop/istio-java-api/blob/master/istio-model/src/main/resources/schema/istio-schema.json"]
+  --     --   ["http://json.schemastore.org/github-workflow"] = ".github/workflows/*",
+  --     --   ["http://json.schemastore.org/github-action"] = ".github/action.{yml,yaml}",
+  --     --   ["http://json.schemastore.org/prettierrc"] = ".prettierrc.{yml,yaml}",
+  --     --   ["http://json.schemastore.org/chart"] = "Chart.{yml,yaml}",
+  --     -- },
+  --
+  --   }
+  -- }
+}
