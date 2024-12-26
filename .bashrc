@@ -177,3 +177,16 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 # Custom Binaries
 export PATH=~/.config/bash/bin/:$PATH
 . "$HOME/.cargo/env"
+
+
+# Replace Ctrl+R with fzf
+__fzf_history_search() {
+    local selected
+    selected="$(history | awk '{$1=""; print $0}' | fzf-tmux -p --reverse)"
+    if [ -n "$selected" ]; then
+      eval "$selected"
+    fi
+}
+
+# Bind Ctrl+R to fzf
+bind -x '"\C-r": __fzf_history_search'  # For bash
