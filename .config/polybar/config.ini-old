@@ -88,7 +88,7 @@ label = %title:0:60:...%
 
 [module/pulseaudio]
 type = internal/pulseaudio
-format-volume-prefix = "VOL "
+format-volume-prefix = "󰎇 "
 format-volume-prefix-foreground = #000000
 format-volume = <label-volume>
 label-volume = %percentage%%
@@ -122,7 +122,7 @@ format-foreground = #000000
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = "CPU "
+format-prefix = " "
 label = %percentage:2%%
 format-padding = 2
 format-background = #BCCCDC
@@ -159,7 +159,7 @@ interval = 1
 date-alt = %Y-%m-%d %H:%M:%S
 date = %Y-%m-%d %H:%M:%S
 format-padding = 2
-format-background = #D9EAFD
+format-background = #FC8F54
 format-foreground = #000000
 label = %date%
 ; label-foreground = ${colors.primary}
@@ -219,4 +219,3 @@ format-foreground = #000000
 format-padding = 1
 separator = %{F#RRGGBB}|%{F-}
 interval = 1
-

@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
-# Terminate already running bar instances
-# If all your bars have ipc enabled, you can use 
-polybar-msg cmd quit
-# Otherwise you can use the nuclear option:
-# killall -q polybar
+THEME="minimal"
 
-# Launch bar1 and bar2
-echo "---" | tee -a /tmp/polybar1.log /tmp/polybar2.log
-polybar mybar --config=~/.config/polybar/config.ini 2>&1 | tee -a /tmp/polybar.log & disown
+killall polybar
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
-echo "Bars launched..."
+CONFIG_DIR=~/.config/polybar/themes/$THEME/config.ini
+polybar main -c $CONFIG_DIR 2>&1 | tee -a /tmp/polybar.log & disown
