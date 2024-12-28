@@ -22,4 +22,10 @@
 ;
 [credential "https://github.com"]
 	helper = 
-	helper = !/usr/bin/gh auth git-credential
+  helper = !/usr/bin/gh auth git-credential
+
+[includeIf "gitdir:~/surge/work/"]
+    path = ~/.gitconfig_work
+
+[includeIf "gitdir:~/projects/"]
+    path = ~/.gitconfig_personal
