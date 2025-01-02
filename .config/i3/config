@@ -198,3 +198,11 @@ bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewi
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
+
+# set desktop background with custom effect
+exec --no-startup-id betterlockscreen -w blur
+
+# Alternative (set last used background)
+exec --no-startup-id source ~/.fehbg
+
+bindsym $mod+shift+x exec betterlockscreen -l blur

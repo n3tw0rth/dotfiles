@@ -94,6 +94,7 @@ alias l='ls -CF'
 alias rg='rg --hidden'
 alias g='git'
 alias vi='nvim'
+alias lg='lazygit'
 
 # to enable completions for git with the alias
 source /usr/share/bash-completion/completions/git
@@ -167,6 +168,8 @@ fi
 
 # keychains
 eval `keychain --eval ~/.ssh/id_rsa --quiet --quick`
+eval `keychain --eval ~/.ssh/keys/rsa-key --quiet --quick`
+eval `keychain --eval ~/.ssh/keys/ssh-key-surge --quiet --quick`
 
 # starship
 eval "$(starship init bash)"
@@ -178,15 +181,3 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export PATH=~/.config/bash/bin/:$PATH
 . "$HOME/.cargo/env"
 
-
-# Replace Ctrl+R with fzf
-# __fzf_history_search() {
-#     local selected
-#     selected="$(history | awk '{$1=""; print $0}' | fzf-tmux -p --reverse)"
-#     if [ -n "$selected" ]; then
-#       eval "$selected"
-#     fi
-# }
-#
-# # Bind Ctrl+R to fzf
-# bind -x '"\C-r": __fzf_history_search'  # For bash
