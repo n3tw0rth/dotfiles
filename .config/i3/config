@@ -96,7 +96,7 @@ bindsym $mod+v split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
+# bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
@@ -206,3 +206,4 @@ exec --no-startup-id betterlockscreen -w blur
 exec --no-startup-id source ~/.fehbg
 
 bindsym $mod+shift+x exec betterlockscreen -l blur
+
