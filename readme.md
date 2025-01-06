@@ -6,6 +6,8 @@ Apps and Tools
 - terminator - terminal
 - i3wm - tiling window manager
 - i3-lock
+- betterlockscreen
+- i3lock-color
 - feh - image viewer
 - picom - X11 compositor
 - tmux - terminal multiplexer
