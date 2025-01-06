@@ -20,6 +20,7 @@ map("n", "<leader>fr", require("telescope.builtin").resume, { desc = "resume the
 map("n", "<leader>fgb", require("telescope.builtin").git_branches, { desc = "git branches" })
 map("n", "<leader>fm", require("telescope.builtin").marks, { desc = "show marks" })
 map("n", "<leader>fs", require("telescope.builtin").grep_string, { desc = "grep string under cursor" })
+map("n", "<leader>fi", require("telescope.builtin").lsp_implementations, { desc = "Show implementations" })
 map(
   "n",
   "<leader>fw",
