@@ -85,6 +85,13 @@ lspconfig.gopls.setup {
   capabilities = capabilities
 }
 
+--astrols
+lspconfig.astro.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities
+}
+
 --yamlls
 require("lspconfig").yamlls.setup {
   -- settings = {
