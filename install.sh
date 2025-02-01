@@ -5,6 +5,7 @@ brew install tmux
 brew install lazygit
 brew install imagemagick
 brew install derailed/k9s/k9s
+brew install ripgrep
 
 sudo apt isntall i3-wm
 sudo apt install suckless-tools
@@ -27,6 +28,8 @@ sudo snap install aws-cli --classic
 sudo snap install dbeaver-ce
 sudo snap install kubectl --classic
 
+cargo install repgrep
+
 
 # install picom from source
 # next branch
@@ -38,3 +41,5 @@ sudo snap install kubectl --classic
 
 
 sudo apt-get install pkg-config libssl-dev
+
+
