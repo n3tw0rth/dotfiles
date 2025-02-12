@@ -92,6 +92,12 @@ lspconfig.astro.setup {
   capabilities = capabilities
 }
 
+lspconfig.asm_ls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities
+}
+
 --yamlls
 require("lspconfig").yamlls.setup {
   -- settings = {

@@ -57,7 +57,7 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run -l 10 -fn 'JetBrainsMono NF:style=Bold:size=10' -nb '#1A1A1D'  -sb '#1A1A1D' -sf '#FAB12F'
 # A more modern dmenu replacement is rofi:
-bindcode $mod+Shift+40 exec "rofi -modi run -show run"
+bindcode $mod+Shift+40 exec "rofi -modi run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+Shift+40 exec --no-startup-id i3-dmenu-desktop
