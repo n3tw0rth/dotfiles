@@ -5,7 +5,9 @@ require("lazy").setup({
     branch = "v2.5",
     import = "nvchad.plugins",
   },
-
+  {
+    "supermaven-inc/supermaven-nvim",
+  },
   { import = "plugins" },
 }, lazy_config)
 
@@ -15,6 +17,15 @@ require("oil").setup({
     show_hidden = true,
   }
 })
+
+require("supermaven-nvim").setup({
+  keymaps = {
+    accept_suggestion = "<A-Tab>",
+    -- clear_suggestion = "<C-]>",
+    -- accept_word = "<C-j>",
+  },
+        ignore_filetypes = { "rust" },
+      })
 
 require("nvim-tree").setup {
   sort = {
