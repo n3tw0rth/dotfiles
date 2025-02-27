@@ -177,7 +177,9 @@ eval `keychain --eval ~/.ssh/keys/ssh-key-surge --quiet --quick`
 
 # starship
 eval "$(starship init bash)"
+export STARSHIP_LOG=error
 
+#brew
 # disable brew auto updates
 export HOMEBREW_NO_AUTO_UPDATE=1
 
