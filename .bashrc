@@ -187,3 +187,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 export PATH=~/.config/bash/bin/:$PATH
 . "$HOME/.cargo/env"
 
+# kubectl 
+source <(kubectl completion bash)
+alias k=kubectl
+complete -o default -F __start_kubectl k
