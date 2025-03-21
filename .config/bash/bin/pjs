@@ -5,6 +5,7 @@ PROJECT=$(find  ~/projects\
   ~/htb\
   ~/\
   ~/surge/work/phg\
+  ~/surge/work/noxcart\
   ~/surge/work/reader-scout\
   -mindepth 1 -maxdepth 1 -type d | fzf-tmux -p --reverse)
 
