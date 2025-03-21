@@ -98,6 +98,13 @@ lspconfig.asm_ls.setup {
   capabilities = capabilities
 }
 
+lspconfig.jdtls.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities
+}
+
+
 --yamlls
 require("lspconfig").yamlls.setup {
   -- settings = {
