@@ -191,3 +191,7 @@ export PATH=~/.config/bash/bin/:$PATH
 source <(kubectl completion bash)
 alias k=kubectl
 complete -o default -F __start_kubectl k
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
