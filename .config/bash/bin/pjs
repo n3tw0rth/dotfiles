@@ -1,18 +1,21 @@
 #!/bin/bash
 
-# open projects in tmux if there are no current sessions
-PROJECT=$(find  ~/projects\
-  ~/htb\
-  ~/\
-  ~/surge/work/phg\
-  ~/surge/work/noxcart\
-  ~/surge/work/reader-scout\
+get_work_dirs() {
+    find ~/surge/work -mindepth 1 -maxdepth 1 -type d
+}
+
+PROJECT=$(find \
+  ~/projects \
+  ~/htb \
+  ~/ \
+  ~/oss \
+  $(get_work_dirs) \
   -mindepth 1 -maxdepth 1 -type d | fzf-tmux -p --reverse)
 
 if [ -n "$PROJECT" ]; then
-    SESSION_NAME=$(basename $PROJECT)
-    tmux switch-client -t $SESSION_NAME || tmux new -d -s $SESSION_NAME -c $PROJECT && tmux switch-client -t $SESSION_NAME
-    echo $(basename $PROJECT)
+    SESSION_NAME=$(basename "$PROJECT")
+    tmux switch-client -t "$SESSION_NAME" || tmux new -d -s "$SESSION_NAME" -c "$PROJECT" && tmux switch-client -t "$SESSION_NAME"
+    echo "$SESSION_NAME"
 else
     echo "Exit with no Selection"
 fi
