@@ -99,6 +99,7 @@ alias g='git'
 alias vi='nvim'
 alias lg='lazygit'
 alias notify='completion-notifier'
+alias terraform='notify -t approve,Enter terraform'
 
 # to enable completions for git with the alias
 source /usr/share/bash-completion/completions/git
