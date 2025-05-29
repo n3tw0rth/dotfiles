@@ -30,3 +30,6 @@ map(
 
 -- Oil
 map("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+-- Copy file name and the line number to clipboard
+map("n", "<Leader>l", ":let @+ = expand('%') . ':' . line('.')<cr>",{desc="Copy file name and the line number"})
