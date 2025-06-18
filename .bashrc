@@ -100,6 +100,10 @@ alias vi='nvim'
 alias lg='lazygit'
 alias notify='completion-notifier'
 alias terraform='notify -t approve,Enter terraform'
+alias j='jired'
+alias z='zoxide'
+
+alias find='vi "$(fzf-tmux -p --reverse | head -n1)"'
 
 # to enable completions for git with the alias
 source /usr/share/bash-completion/completions/git
@@ -138,19 +142,6 @@ export force_color_prompt=yes
 
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/usr/local/bin:$PATH
-
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/byt3z/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/byt3z/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/byt3z/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/byt3z/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
 
 # Automatically mirror displays if a second monitor is connected
 if command -v xrandr > /dev/null; then
@@ -196,3 +187,19 @@ complete -o default -F __start_kubectl k
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/theekshana/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/theekshana/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/theekshana/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/theekshana/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
