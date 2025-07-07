@@ -8,7 +8,6 @@ M.ui = {
   telescope = {
     style = "bordered"
   },
-
 }
 
 M.base46 = {

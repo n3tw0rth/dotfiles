@@ -16,16 +16,17 @@ map({ "n", "v" }, "<leader>cc", [[:s/\v_(\w)/\U\1/g<CR>:s/\v(^\l)/\L\1/<CR>]], {
 map({ "n", "v" }, "<leader>ck", [[:s/\v-([a-z])/_\1/g<CR>]], { desc = "kebab-case to snake_case" })
 
 -- telescope
-map("n", "<leader>fr", require("telescope.builtin").resume, { desc = "resume the previous picker" })
-map("n", "<leader>fgb", require("telescope.builtin").git_branches, { desc = "git branches" })
-map("n", "<leader>fm", require("telescope.builtin").marks, { desc = "show marks" })
-map("n", "<leader>fs", require("telescope.builtin").grep_string, { desc = "grep string under cursor" })
+map("n", "<leader>gG", require("telescope.builtin").git_branches, { desc = "Checkout git branch" })
+map("n", "<leader>gs", require("telescope.builtin").git_status, { desc = "Open current modified files" })
+map("n", "<leader>fr", require("telescope.builtin").resume, { desc = "Resume the previous picker" })
+map("n", "<leader>fm", require("telescope.builtin").marks, { desc = "Show marks" })
+map("n", "<leader>fs", require("telescope.builtin").grep_string, { desc = "Grep string under cursor" })
 map("n", "<leader>fi", require("telescope.builtin").lsp_implementations, { desc = "Show implementations" })
 map(
   "n",
   "<leader>fw",
   ":lua require('telescope.builtin').live_grep({ additional_args = function() return { '--hidden' } end })<cr>",
-  { silent = true, desc = "Find in Files" }
+  { silent = true, desc = "Find in  All Files" }
 )
 
 -- Oil
