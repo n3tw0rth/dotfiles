@@ -6,7 +6,6 @@ get_work_dirs() {
 
 PROJECT=$(find \
   ~/projects \
-  ~/htb \
   ~/ \
   ~/oss \
   $(get_work_dirs) \
