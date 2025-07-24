@@ -1,26 +1,11 @@
 return
 {
   "hrsh7th/nvim-cmp",
+  version = false, -- last release is way too old
+  event = "InsertEnter",
   dependencies = {
-    { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
   },
-  opts = function(_, opts)
-local cmp = require("cmp")
-    -- original LazyVim kind icon formatter
-    local format_kinds = opts.formatting.format
-    opts.formatting.format = function(entry, item)
-      format_kinds(entry, item)   -- add icons
-      return require("tailwindcss-colorizer-cmp").formatter(entry, item)
-    end
-
-    return {
-      auto_brackets = {},
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "luasnip" },
-        { name = "emoji" },
-      })
-    }
-
-  end,
 }
