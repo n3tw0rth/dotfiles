@@ -22,7 +22,6 @@ map("n", "<leader>fr", require("telescope.builtin").resume, { desc = "Resume the
 map("n", "<leader>fm", require("telescope.builtin").marks, { desc = "Show marks" })
 map("n", "<leader>fs", require("telescope.builtin").grep_string, { desc = "Grep string under cursor" })
 map("n", "<leader>fi", require("telescope.builtin").lsp_implementations, { desc = "Show implementations" })
-map("n", '<leader>ze', require("telescope").load_extension("emoji").emoji , { desc = '[S]earch [E]moji' })
 map(
   "n",
   "<leader>fw",

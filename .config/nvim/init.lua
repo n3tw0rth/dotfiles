@@ -35,3 +35,10 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.commentstring = "# %s"
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "javascriptreact",
+  callback = function()
+    vim.opt_local.commentstring = "// %s"
+  end,
+})
