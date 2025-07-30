@@ -37,8 +37,21 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "javascriptreact",
+  pattern = "javascriptreact,typescript",
   callback = function()
     vim.opt_local.commentstring = "// %s"
   end,
 })
+
+-- change color for all the nvim-tree icons
+local icon_color = "#9AA6B2" -- Change this to whatever color you want
+
+vim.api.nvim_set_hl(0, "NvimTreeFolderIcon", { fg = icon_color })
+vim.api.nvim_set_hl(0, "NvimTreeOpenedFolderIcon", { fg = icon_color })
+vim.api.nvim_set_hl(0, "NvimTreeClosedFolderIcon", { fg = icon_color })
+vim.api.nvim_set_hl(0, "NvimTreeFileIcon", { fg = icon_color })
+vim.api.nvim_set_hl(0, "NvimTreeSpecialFile", { fg = "#D3D3D3", bold = false, italic = false })
+
+for _, group in ipairs(vim.fn.getcompletion("DevIcon", "highlight")) do
+  vim.api.nvim_set_hl(0, group, { fg = icon_color })
+end

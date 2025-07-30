@@ -29,3 +29,5 @@
 
 [includeIf "gitdir:~/projects/"]
     path = ~/.gitconfig_personal
+[color]
+	ui = false

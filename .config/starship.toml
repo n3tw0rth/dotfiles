@@ -11,13 +11,14 @@ $character"""
 [sudo]
 disabled = false
 format = "[$symbol]($style)"
-symbol = "❄️ "
+style = "#9AA6B2"
+symbol = "*"
 
 [directory]
 format = ' [$path]($style)[$read_only]($read_only_style) '
 home_symbol = '~'
-style = "#5B99C2"
-read_only = '🔒'
+style = "#9AA6B2"
+read_only = 'ro'
 
 [character]
 success_symbol = "[ - ](purple)"
@@ -26,11 +27,11 @@ vimcmd_symbol = "[ - ](green)"
 
 [git_branch]
 format = "[$branch]($style)"
-style = "bright-black"
+style = "#9AA6B2"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)"
-style = "cyan"
+style = "#9AA6B2"
 conflicted = "​"
 untracked = "​"
 modified = "​"
@@ -48,4 +49,4 @@ style = "bright-black"
 
 [cmd_duration]
 format = " took [$duration]($style) "
-style = "#41B3A2"
+style = "#B0BCC8"

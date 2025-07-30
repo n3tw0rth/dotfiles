@@ -87,6 +87,9 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+# change the fzf and fzf-tmux color to 
+export FZF_DEFAULT_OPTS='--color=fg:#9AA6B2,bg:#000000,hl:#9AA6B2,prompt:#9AA6B2,pointer:#9AA6B2,marker:#9AA6B2,spinner:#9AA6B2,header:#9AA6B2'
+
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
@@ -203,3 +206,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Remove color from nodejs output
+export NO_COLOR=1
