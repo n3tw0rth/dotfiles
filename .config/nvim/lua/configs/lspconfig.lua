@@ -54,13 +54,6 @@ lspconfig.pyright.setup {
   filetypes = { "python" },
 }
 
---tailwindcss
-lspconfig.tailwindcss.setup {
-  on_attach = on_attach,
-  on_init = on_init,
-}
-
-
 --clangd
 require('lspconfig').clangd.setup {
   filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "hpp" },

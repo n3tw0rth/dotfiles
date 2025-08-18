@@ -5,7 +5,6 @@ return
     ensure_installed = {
       "rust-analyzer",
       "typescript-language-server",
-      "tailwindcss-language-server",
       "rustywind",
       "lua-language-server",
       "pyright",
