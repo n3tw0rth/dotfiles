@@ -34,18 +34,6 @@ return {
       }
     }
   },
-  theme = {
-      [241]                      = { fg = "Special" },
-      activeBorderColor          = { fg = "#9AA6B2", bold = true },
-      cherryPickedCommitBgColor  = { fg = "Identifier" },
-      cherryPickedCommitFgColor  = { fg = "Function" },
-      defaultFgColor             = { fg = "Normal" },
-      inactiveBorderColor        = { fg = "#5A646E" },
-      optionsTextColor           = { fg = "#9AA6B2" },
-      searchingActiveBorderColor = { fg = "MatchParen", bold = true },
-      selectedLineBgColor        = { bg = "Visual" }, -- set to `default` to have no background colour
-      unstagedChangesColor       = { fg = "DiagnosticError" },
-  },
   keys = {
     { "<leader>N",  function() Snacks.notifier.show_history() end,   desc = "Notification History" },
     { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },

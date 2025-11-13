@@ -1,5 +1,4 @@
-return
-{
+return {
   "williamboman/mason.nvim",
   opts = {
     ensure_installed = {
@@ -7,6 +6,7 @@ return
       "typescript-language-server",
       "rustywind",
       "lua-language-server",
+      "tailwindcss-language-server",
       "pyright",
       "stylua",
       "html-lsp",

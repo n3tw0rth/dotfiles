@@ -4,9 +4,14 @@
 [keybindings]
 [profiles]
   [[default]]
-    background_darkness = 0.87
+    background_darkness = 0.85
     background_type = transparent
-    font = JetBrainsMono Nerd Font Bold 10
+    font = JetBrainsMono Nerd Font 10
+    show_titlebar = False
+    scrollbar_position = hidden
+    use_system_font = False
+  [[slides]]
+    font = JetBrainsMono Nerd Font Bold 20
     show_titlebar = False
     scrollbar_position = hidden
     use_system_font = False
