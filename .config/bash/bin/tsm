@@ -2,7 +2,7 @@
 
 # to move between sessions when there are a lot
 
-SESSION_NAME="$(tmux ls 2>/dev/null | awk -F':' '{print $1}' | fzf-tmux -p --reverse)"
+SESSION_NAME="$(tmux ls 2>/dev/null | awk -F':' '{print $1}' | fzf-tmux -p --reverse $FZF_DEFAULT_OPTS)"
 
 if [ -n "$SESSION_NAME" ]; then
   tmux switch-client -t $SESSION_NAME

@@ -9,7 +9,7 @@ PROJECT=$(find \
   ~/ \
   ~/oss \
   $(get_work_dirs) \
-  -mindepth 1 -maxdepth 1 -type d | fzf-tmux -p --reverse)
+  -mindepth 1 -maxdepth 1 -type d | fzf-tmux -p --reverse $FZF_DEFAULT_OPTS)
 
 if [ -n "$PROJECT" ]; then
     SESSION_NAME=$(basename "$PROJECT")

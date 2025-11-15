@@ -8,13 +8,6 @@ require("lazy").setup({
   { import = "plugins" },
 }, lazy_config)
 
-require("oil").setup({
-  default_file_explorer = false,
-  view_options = {
-    show_hidden = true,
-  }
-})
-
 require("nvim-tree").setup {
   sort = {
     sorter = "case_sensitive",
@@ -28,7 +21,7 @@ require("nvim-tree").setup {
   },
   filters = {
     dotfiles = false,
-    git_ignored = false
+    git_ignored = false,
   },
   update_focused_file = {
     enable = true,
@@ -40,4 +33,4 @@ require("nvim-tree").setup {
   },
 }
 
-require('leap').add_default_mappings()
+require("leap").add_default_mappings()

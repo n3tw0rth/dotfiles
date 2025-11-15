@@ -55,14 +55,14 @@ lspconfig.pyright.setup {
 }
 
 --clangd
-require('lspconfig').clangd.setup {
+require("lspconfig").clangd.setup {
   filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto", "hpp" },
 }
 
 require("lspconfig").terraformls.setup {
   on_attach = on_attach,
   on_init = on_init,
-  capabilities = capabilities
+  capabilities = capabilities,
 }
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*.tf", "*.tfvars" },
@@ -75,28 +75,33 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 lspconfig.gopls.setup {
   on_attach = on_attach,
   on_init = on_init,
-  capabilities = capabilities
+  capabilities = capabilities,
 }
 
 --astrols
 lspconfig.astro.setup {
   on_attach = on_attach,
   on_init = on_init,
-  capabilities = capabilities
+  capabilities = capabilities,
 }
 
 lspconfig.asm_ls.setup {
   on_attach = on_attach,
   on_init = on_init,
-  capabilities = capabilities
+  capabilities = capabilities,
 }
 
 lspconfig.jdtls.setup {
   on_attach = on_attach,
   on_init = on_init,
-  capabilities = capabilities
+  capabilities = capabilities,
 }
 
+lspconfig.tailwindcss.setup {
+  on_attach = on_attach,
+  on_init = on_init,
+  capabilities = capabilities,
+}
 
 --yamlls
 require("lspconfig").yamlls.setup {
