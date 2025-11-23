@@ -203,3 +203,9 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id betterlockscreen -w blur
 exec --no-startup-id source ~/.fehbg
 bindsym $mod+shift+x exec betterlockscreen -l dim
+
+# binds the caps lock to ctrl
+exec --no-startup-id setxkbmap -option ctrl:nocaps
+
+# pressing home button delete the last word
+bindsym Delete exec --no-startup-id xmodmap -e "keycode 119 = BackSpace"
