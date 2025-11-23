@@ -35,13 +35,13 @@ return {
     }
   },
   keys = {
-    { "<leader>N",  function() Snacks.notifier.show_history() end,   desc = "Notification History" },
-    { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
-    { "<leader>gB", function() Snacks.gitbrowse() end,          desc = "Git Browse" },
-    { "<leader>gf", function() Snacks.lazygit.log_file() end,   desc = "Lazygit Current File History" },
-    { "<leader>gg", function() Snacks.lazygit() end,            desc = "Lazygit" },
-    { "<leader>gl", function() Snacks.lazygit.log() end,        desc = "Lazygit Log (cwd)" },
-    { "<leader>sd", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
+    { "<leader>N",  function() Snacks.notifier.show_history() end, desc = "Notification History" },
+    { "<leader>cR", function() Snacks.rename.rename_file() end,    desc = "Rename File" },
+    { "<leader>gB", function() Snacks.gitbrowse() end,             desc = "Git Browse" },
+    { "<leader>gf", function() Snacks.lazygit.log_file() end,      desc = "Lazygit Current File History" },
+    { "<leader>gg", function() Snacks.lazygit() end,               desc = "Lazygit" },
+    { "<leader>gl", function() Snacks.lazygit.log() end,           desc = "Lazygit Log (cwd)" },
+    { "<leader>sd", function() Snacks.picker.diagnostics() end,    desc = "Diagnostics" },
   },
   init = function()
     vim.api.nvim_create_autocmd("User", {
@@ -57,13 +57,7 @@ return {
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
         -- Create some toggle mappings
-        -- Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
-        -- Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
-        -- Snacks.toggle.option("conceallevel", { off = 0, on = vim.o.conceallevel > 0 and vim.o.conceallevel or 2 }):map(
-        -- "<leader>uc")
-        -- Snacks.toggle.treesitter():map("<leader>uT")
-        -- Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
-        -- Snacks.toggle.inlay_hints():map("<leader>uh")
+        Snacks.toggle.option("spell", { name = "Spelling" }):map("<leader>us")
       end,
     })
   end,
