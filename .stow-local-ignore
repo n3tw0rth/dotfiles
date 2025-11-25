@@ -1,4 +1,5 @@
 .git
 theme.txt
 readme.md
-install.sh
+install.md
+xinputconfig.sh
