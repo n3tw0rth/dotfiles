@@ -3,7 +3,10 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = vim.lsp.config
-local servers = { "html", "cssls", "phpactor" , "ts_ls", "pyright", "clangd", "terraformls", "gopls","astro","asm_ls", "tailwindcss","yamlls" }
+local servers = { "html", "cssls", "phpactor" }
+-- { "html", "cssls", "phpactor" , "ts_ls", "pyright", "clangd", "terraformls", "gopls","astro","asm_ls", "tailwindcss","yamlls" ,"marksman"}
+
+vim.lsp.enable('marksman')
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
