@@ -32,5 +32,3 @@ require("nvim-tree").setup {
     exclude = false,
   },
 }
-
-require("leap").add_default_mappings()

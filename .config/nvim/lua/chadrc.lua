@@ -1,6 +1,8 @@
 ---@type ChadrcConfig
 local M = {}
 
+local fg_color = { fg = "#9AA6B2"}
+
 M.ui = {
   statusline = {
     theme = "vscode",
@@ -21,18 +23,25 @@ M.base46 = {
   transparency = true,
 
   hl_override = {
-    Comment = { italic = false },
-    ["@comment"] = { italic = true },
-    NvimTreeNormal = { fg = "#9AA6B2" },
-    NvimTreeFolderName = { fg = "#9AA6B2" },
-    NvimTreeOpenedFolderName = { fg = "#9AA6B2" },
-    NvimTreeRootFolderName = { fg = "#9AA6B2" },
-    NvimTreeSymlink = { fg = "#9AA6B2" },
-    NvimTreeExecFile = { fg = "#9AA6B2" },
-    NvimTreeFile = { fg = "#9AA6B2" },
-    NvimTreeIndentMarker = { fg = "#9AA6B2" },
-    NvimTreeFolderIcon = { fg = "#9AA6B2" },
-    NvimTreeCursorLine = { fg = "#9AA6B2" },
+    ["@property"] = fg_color,
+    ["@variable.member"] = fg_color,
+    ["@punctuation.bracket"] = fg_color,
+    Keyword = fg_color,
+    Macro = fg_color,
+    Conditional = fg_color,
+    Identifier = fg_color,
+    Special = fg_color,
+    NvimTreeNormal = fg_color,
+    NvimTreeFolderName = fg_color,
+    NvimTreeOpenedFolderName = fg_color,
+    NvimTreeRootFolderName = fg_color,
+    NvimTreeSymlink = fg_color,
+    NvimTreeExecFile = fg_color,
+    NvimTreeFile = fg_color,
+    NvimTreeFileIcon = fg_color,
+    NvimTreeIndentMarker = fg_color,
+    NvimTreeFolderIcon = fg_color,
+    NvimTreeCursorLine = fg_color,
   },
 }
 

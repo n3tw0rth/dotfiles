@@ -56,3 +56,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("n", "<space>rn", vim.lsp.buf.rename, opts)
   end,
 })
+
+vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
+vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')

@@ -14,6 +14,7 @@ return {
       "prettier",
       "phpactor",
       "terraformls",
+      "marksman"
     },
   },
 }
