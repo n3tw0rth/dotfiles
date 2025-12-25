@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {}
 
-local fg_color = { fg = "#9AA6B2"}
+local fg_color = { fg = "#9AA6B2" }
 
 M.ui = {
   statusline = {
@@ -42,6 +42,11 @@ M.base46 = {
     NvimTreeIndentMarker = fg_color,
     NvimTreeFolderIcon = fg_color,
     NvimTreeCursorLine = fg_color,
+    LineNrAbove = fg_color,
+    LineNrBelow = fg_color,
+    CursorLineNr = { fg = "white" },
+    ZenBg = { fg = "none" }
+
   },
 }
 
