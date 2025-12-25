@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-tmux bind-key P run-shell "~/.config/bash/bin/pjs"
+tmux bind-key -n M-p run-shell "~/.config/bash/bin/pjs"

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-tmux bind-key t run-shell "~/.config/bash/bin/tsm"
+tmux bind-key -n M-t run-shell "~/.config/bash/bin/tsm"
