@@ -3,6 +3,10 @@ return {
   ---@module 'oil'
   ---@type oil.SetupOpts
   opts = {
+    columns = {
+      "permissions",
+      "size",
+    },
     default_file_explorer = false,
     view_options = {
       show_hidden = true,
