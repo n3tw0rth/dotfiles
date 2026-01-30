@@ -106,6 +106,7 @@ alias lg='lazygit'
 alias notify='completion-notifier'
 alias terraform='notify -t approve,Enter terraform'
 alias j='jired'
+alias cr='cargo run'
 
 # to enable completions for git with the alias
 source /usr/share/bash-completion/completions/git
