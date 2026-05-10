@@ -17,6 +17,7 @@ local options = {
     yaml = { "prettier" },
     astro = { "prettier" },
     json = { "prettier" },
+    php = { "php_cs_fixer" },
   },
 
   format_on_save = {
