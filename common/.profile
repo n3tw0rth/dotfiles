@@ -25,8 +25,6 @@ fi
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
-
-# disable caps-lock
-setxkbmap -option ctrl:nocaps
+# caps-lock -> ctrl is set by the window manager (i3 and sway configs)

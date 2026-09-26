@@ -1,0 +1,143 @@
+# Install packages and link the dotfiles.
+#
+#   ansible-playbook ansible/playbook.yml -K              # auto-detect sway or i3
+#   ansible-playbook ansible/playbook.yml -K -e wm=i3     # force i3
+#
+# Supports Arch and Debian-based systems (Debian, Ubuntu, Pop!_OS).
+
+- name: Set up dotfiles
+  hosts: localhost
+  connection: local
+  gather_facts: true
+
+  vars:
+    dotfiles: "{{ playbook_dir | dirname }}"
+    src_dir: "{{ ansible_env.HOME }}/.cache/dotfiles-src"
+    session: "{{ lookup('env', 'XDG_SESSION_TYPE') }}"
+    detected_wm: >-
+      {{ 'sway' if session == 'wayland' or lookup('env', 'WAYLAND_DISPLAY')
+         else 'i3' if session == 'x11' or lookup('env', 'DISPLAY')
+         else '' }}
+    wm: "{{ detected_wm }}"
+    arch: "{{ {'x86_64': 'x86_64', 'aarch64': 'arm64'}[ansible_architecture] }}"
+
+  pre_tasks:
+    - name: Check the window manager
+      ansible.builtin.assert:
+        that: wm in ['sway', 'i3']
+        fail_msg: "Could not detect sway or i3 (no graphical session); pass -e wm=sway or -e wm=i3"
+
+    - name: Load package names for {{ ansible_os_family }}
+      ansible.builtin.include_vars: "vars/{{ ansible_os_family }}.yml"
+
+  tasks:
+    - name: Update apt cache
+      become: true
+      ansible.builtin.apt:
+        update_cache: true
+        cache_valid_time: 3600
+      when: ansible_os_family == 'Debian'
+
+    - name: Install packages
+      become: true
+      ansible.builtin.package:
+        name: "{{ packages + (sway_packages if wm == 'sway' else i3_packages) }}"
+        state: present
+
+    - name: Install snaps
+      become: true
+      community.general.snap:
+        name: "{{ item.name }}"
+        classic: "{{ item.classic }}"
+      loop: "{{ snaps }}"
+
+    - name: Debian-only installs
+      when: ansible_os_family == 'Debian'
+      block:
+        - name: Install starship
+          become: true
+          ansible.builtin.shell: curl -sS https://starship.rs/install.sh | sh -s -- -y
+          args:
+            creates: /usr/local/bin/starship
+
+        - name: Install k9s
+          become: true
+          ansible.builtin.apt:
+            deb: "https://github.com/derailed/k9s/releases/latest/download/k9s_linux_{{ 'amd64' if arch == 'x86_64' else 'arm64' }}.deb"
+
+        - name: Get latest lazygit release
+          ansible.builtin.uri:
+            url: https://api.github.com/repos/jesseduffield/lazygit/releases/latest
+          register: lazygit_release
+
+        - name: Install lazygit
+          become: true
+          vars:
+            version: "{{ lazygit_release.json.tag_name | regex_replace('^v', '') }}"
+          ansible.builtin.unarchive:
+            src: "https://github.com/jesseduffield/lazygit/releases/download/v{{ version }}/lazygit_{{ version }}_Linux_{{ arch }}.tar.gz"
+            remote_src: true
+            dest: /usr/local/bin
+            include: [lazygit]
+            creates: /usr/local/bin/lazygit
+
+    - name: Build i3 extras from source
+      when: wm == 'i3'
+      block:
+        - name: Clone picom (next branch)
+          ansible.builtin.git:
+            repo: https://github.com/yshui/picom
+            dest: "{{ src_dir }}/picom"
+            version: next
+          register: picom_src
+          when: build_picom
+
+        - name: Check for installed picom
+          ansible.builtin.stat:
+            path: /usr/local/bin/picom
+          register: picom_bin
+
+        - name: Build picom
+          ansible.builtin.shell: |
+            rm -rf build
+            meson setup --buildtype=release build
+            ninja -C build
+          args:
+            chdir: "{{ src_dir }}/picom"
+          when: build_picom and (picom_src.changed or not picom_bin.stat.exists) and not ansible_check_mode
+
+        - name: Install picom
+          become: true
+          ansible.builtin.command: ninja -C build install
+          args:
+            chdir: "{{ src_dir }}/picom"
+          when: build_picom and (picom_src.changed or not picom_bin.stat.exists) and not ansible_check_mode
+
+        - name: Clone i3lock-color
+          ansible.builtin.git:
+            repo: https://github.com/Raymo111/i3lock-color
+            dest: "{{ src_dir }}/i3lock-color"
+          register: i3lock_src
+
+        - name: Check for installed i3lock-color
+          ansible.builtin.stat:
+            path: /usr/bin/i3lock
+          register: i3lock_bin
+
+        - name: Build i3lock-color
+          ansible.builtin.command: ./build.sh
+          args:
+            chdir: "{{ src_dir }}/i3lock-color"
+          when: (i3lock_src.changed or not i3lock_bin.stat.exists) and not ansible_check_mode
+
+        - name: Install i3lock-color
+          become: true
+          ansible.builtin.command: make -C build install
+          args:
+            chdir: "{{ src_dir }}/i3lock-color"
+          when: (i3lock_src.changed or not i3lock_bin.stat.exists) and not ansible_check_mode
+
+    - name: Link dotfiles
+      ansible.builtin.command: "{{ dotfiles }}/stow.sh {{ wm }}"
+      register: stow
+      changed_when: "'LINK' in stow.stdout"

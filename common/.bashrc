@@ -1,8 +1,6 @@
 set -o vi
 bind -x '"\C-l": clear'
 
-export PATH="$PATH:/opt/nvim/bin"
-
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -134,7 +132,11 @@ if ! shopt -oq posix; then
   fi
 fi
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# setup-specific config (i3 or sway package, see stow.sh)
+for f in ~/.config/bash/profile.d/*.sh; do
+    [ -r "$f" ] && . "$f"
+done
+unset f
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -146,30 +148,13 @@ export force_color_prompt=yes
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/usr/local/bin:$PATH
 
-# Automatically mirror displays if a second monitor is connected
-if command -v xrandr > /dev/null; then
-    # Get the primary monitor (first connected monitor)
-    PRIMARY_MONITOR=$(xrandr | grep " connected primary" | cut -d' ' -f1)
-    
-    # If no primary monitor is found, find the first connected monitor
-    if [ -z "$PRIMARY_MONITOR" ]; then
-        PRIMARY_MONITOR=$(xrandr | grep " connected" | head -n 1 | cut -d' ' -f1)
-    fi
-
-    # Get the second connected monitor (if any)
-    SECONDARY_MONITOR=$(xrandr | grep " connected" | grep -v "$PRIMARY_MONITOR" | head -n 1 | cut -d' ' -f1)
-
-    # If both monitors are connected, mirror the primary monitor to the secondary
-    if [ -n "$SECONDARY_MONITOR" ]; then
-        xrandr --output "$PRIMARY_MONITOR" --auto --output "$SECONDARY_MONITOR" --auto --same-as "$PRIMARY_MONITOR"
-    fi
-fi
-
-
 # keychains
-eval `keychain --eval ~/.ssh/id_rsa --quiet --quick`
-eval `keychain --eval ~/.ssh/keys/rsa-key --quiet --quick`
-eval `keychain --eval ~/.ssh/keys/ssh-key-surge --quiet --quick`
+if command -v keychain > /dev/null; then
+    for key in ~/.ssh/id_rsa ~/.ssh/keys/rsa-key ~/.ssh/keys/ssh-key-surge; do
+        [ -f "$key" ] && eval `keychain --eval "$key" --quiet --quick`
+    done
+    unset key
+fi
 
 # starship
 eval "$(starship init bash)"
@@ -181,33 +166,20 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 
 # Custom Binaries
 export PATH=~/.config/bash/bin/:$PATH
-. "$HOME/.cargo/env"
+[ -f "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
 
-export PATH=${PATH}:`go env GOPATH`/bin
+command -v go > /dev/null && export PATH=${PATH}:`go env GOPATH`/bin
 
-# kubectl 
-source <(kubectl completion bash)
-alias k=kubectl
-complete -o default -F __start_kubectl k
+# kubectl
+if command -v kubectl > /dev/null; then
+    source <(kubectl completion bash)
+    alias k=kubectl
+    complete -o default -F __start_kubectl k
+fi
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/theekshana/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/theekshana/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/theekshana/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/theekshana/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
 
 # =============================================================================
 #

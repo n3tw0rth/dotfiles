@@ -1,0 +1,78 @@
+# Debian / Ubuntu / Pop!_OS
+packages:
+  - git
+  - build-essential
+  - curl
+  - stow
+  - neovim
+  - tmux
+  - imagemagick
+  - ripgrep
+  - keychain
+  - terminator
+  - fzf
+  - snapd
+  - pkg-config
+  - libssl-dev
+
+sway_packages:
+  - sway
+  - grim
+  - slurp
+  - wl-clipboard
+  - jq
+  - fonts-jetbrains-mono
+
+i3_packages:
+  - i3-wm
+  - suckless-tools
+  - polybar
+  - xclip
+  - maim
+  - dunst
+  - feh
+  # picom build dependencies
+  - libconfig-dev
+  - libdbus-1-dev
+  - libegl-dev
+  - libev-dev
+  - libgl-dev
+  - libepoxy-dev
+  - libpcre2-dev
+  - libpixman-1-dev
+  - libx11-xcb-dev
+  - libxcb1-dev
+  - libxcb-composite0-dev
+  - libxcb-damage0-dev
+  - libxcb-glx0-dev
+  - libxcb-image0-dev
+  - libxcb-present-dev
+  - libxcb-randr0-dev
+  - libxcb-render0-dev
+  - libxcb-render-util0-dev
+  - libxcb-shape0-dev
+  - libxcb-util-dev
+  - libxcb-xfixes0-dev
+  - meson
+  - ninja-build
+  - uthash-dev
+  # i3lock-color build dependencies
+  - autoconf
+  - libpam0g-dev
+  - libcairo2-dev
+  - libfontconfig1-dev
+  - libxcb-xkb-dev
+  - libxcb-xinerama0-dev
+  - libxcb-xrm-dev
+  - libxkbcommon-dev
+  - libxkbcommon-x11-dev
+  - libjpeg-dev
+  - libgif-dev
+
+snaps:
+  - { name: aws-cli, classic: true }
+  - { name: kubectl, classic: true }
+  - { name: dbeaver-ce, classic: false }
+
+# The packaged picom is too old; build the next branch from source
+build_picom: true

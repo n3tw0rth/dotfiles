@@ -1,0 +1,56 @@
+packages:
+  - git
+  - base-devel
+  - stow
+  - neovim
+  - starship
+  - tmux
+  - lazygit
+  - imagemagick
+  - k9s
+  - ripgrep
+  - keychain
+  - terminator
+  - fzf
+  - aws-cli-v2
+  - dbeaver
+  - kubectl
+  - pkgconf
+  - openssl
+  - openvpn
+
+sway_packages:
+  - sway
+  - grim
+  - slurp
+  - wl-clipboard
+  - jq
+  - ttf-jetbrains-mono-nerd
+
+i3_packages:
+  - i3-wm
+  - dmenu
+  - polybar
+  - xclip
+  - maim
+  - dunst
+  - feh
+  - picom
+  # i3lock-color build dependencies
+  - autoconf
+  - cairo
+  - fontconfig
+  - libev
+  - libjpeg-turbo
+  - libxinerama
+  - libxkbcommon-x11
+  - libxrandr
+  - pam
+  - xcb-util-image
+  - xcb-util-xrm
+
+# Installed with snap on Debian; all in the Arch repos
+snaps: []
+
+# Built from source when true
+build_picom: false
