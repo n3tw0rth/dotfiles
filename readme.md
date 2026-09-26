@@ -49,7 +49,7 @@ Apps and Tools
     - mod key is Alt, bar is swaybar styled like the nix-config waybar
       (status from .config/sway/status.py)
     - grim, slurp, wl-clipboard, jq - screenshots
-    - ttf-jetbrains-mono-nerd - bar font
+    - ttf-iosevkaterm-nerd - bar font
 - i3-lock
 - betterlockscreen
 - i3lock-color

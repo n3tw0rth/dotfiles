@@ -237,7 +237,7 @@ bar {
     # Styled after the waybar in https://github.com/n3tw0rth/nix-config
     position bottom
     height 28
-    font pango:JetBrainsMono Nerd Font, monospace 9
+    font pango:IosevkaTerm Nerd Font, monospace 10
     status_command ~/.config/sway/status.py
     status_padding 0
     status_edge_padding 10

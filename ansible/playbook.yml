@@ -17,7 +17,7 @@
     detected_wm: >-
       {{ 'sway' if session == 'wayland' or lookup('env', 'WAYLAND_DISPLAY')
          else 'i3' if session == 'x11' or lookup('env', 'DISPLAY')
-         else '' }}
+         else lookup('pipe', 'if pgrep -x sway >/dev/null; then echo sway; elif pgrep -x i3 >/dev/null; then echo i3; fi') }}
     wm: "{{ detected_wm }}"
     arch: "{{ {'x86_64': 'x86_64', 'aarch64': 'arm64'}[ansible_architecture] }}"
 
@@ -136,6 +136,58 @@
           args:
             chdir: "{{ src_dir }}/i3lock-color"
           when: (i3lock_src.changed or not i3lock_bin.stat.exists) and not ansible_check_mode
+
+    - name: Set up SDDM with a qylock theme
+      when: ansible_os_family == 'Archlinux'
+      vars:
+        qylock_dir: "{{ src_dir }}/qylock"
+      block:
+        - name: Install SDDM packages
+          become: true
+          ansible.builtin.package:
+            name: "{{ sddm_packages }}"
+            state: present
+
+        # The full repo is over 1 GB of videos, so only check out the chosen theme
+        - name: Clone qylock (sparse)
+          ansible.builtin.command: >-
+            git clone --depth 1 --filter=blob:none --sparse
+            https://github.com/Darkkal44/qylock {{ qylock_dir }}
+          args:
+            creates: "{{ qylock_dir }}"
+
+        - name: Check out the {{ sddm_theme }} theme
+          ansible.builtin.command: git -C {{ qylock_dir }} sparse-checkout set themes/{{ sddm_theme }}
+          changed_when: false
+
+        - name: Install the theme
+          become: true
+          ansible.builtin.copy:
+            src: "{{ qylock_dir }}/themes/{{ sddm_theme }}/"
+            dest: /usr/share/sddm/themes/{{ sddm_theme }}/
+            remote_src: true
+          when: not ansible_check_mode
+
+        - name: Create the SDDM config directory
+          become: true
+          ansible.builtin.file:
+            path: /etc/sddm.conf.d
+            state: directory
+            mode: "0755"
+
+        - name: Configure SDDM
+          become: true
+          ansible.builtin.copy:
+            dest: /etc/sddm.conf.d/theme.conf
+            content: |
+              [Theme]
+              Current={{ sddm_theme }}
+
+        - name: Enable SDDM at boot
+          become: true
+          ansible.builtin.systemd:
+            name: sddm
+            enabled: true
 
     - name: Link dotfiles
       ansible.builtin.command: "{{ dotfiles }}/stow.sh {{ wm }}"

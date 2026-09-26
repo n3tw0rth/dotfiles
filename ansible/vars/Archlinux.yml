@@ -18,14 +18,24 @@ packages:
   - pkgconf
   - openssl
   - openvpn
+  # Audio
+  - pipewire
+  - pipewire-pulse
+  - pipewire-alsa
+  - wireplumber
+  - pavucontrol
 
 sway_packages:
   - sway
+  - swaybg
+  - swaylock
+  - swayidle
   - grim
   - slurp
   - wl-clipboard
+  - xorg-xwayland   # X11 apps (Java GUIs like Ghidra) under sway
   - jq
-  - ttf-jetbrains-mono-nerd
+  - ttf-iosevkaterm-nerd
 
 i3_packages:
   - i3-wm
@@ -49,8 +59,53 @@ i3_packages:
   - xcb-util-image
   - xcb-util-xrm
 
+# SDDM login screen with a qylock theme (https://github.com/Darkkal44/qylock)
+sddm_packages:
+  - sddm
+  - qt6-declarative
+  - qt6-5compat
+  - qt6-svg
+  - qt6-multimedia
+  - qt6-multimedia-ffmpeg
+  - gst-plugins-base
+  - gst-plugins-good
+  - gst-plugins-bad
+  - gst-plugins-ugly
+
+# Folder name under themes/ in the qylock repo
+sddm_theme: sword
+
 # Installed with snap on Debian; all in the Arch repos
 snaps: []
 
 # Built from source when true
 build_picom: false
+
+# Ethical hacking / CTF tools, installed with paru by `just pwn` (repo and
+# AUR packages alike). Mirrors modules/pwn in the nix-config repo.
+pwn_packages:
+  # reconnaissance
+  - nmap
+  - rustscan
+  - gobuster
+  - ffuf
+  - netexec
+  - ssh-audit
+  - caido-desktop
+  # reversing
+  - radare2
+  - ltrace
+  - strace
+  - ghidra
+  # misc
+  - impacket
+  - metasploit
+  - wireshark-qt
+  # crack
+  - hashid
+  - hashcat
+  - john
+  # bruteforce / injection
+  - sqlmap
+  # wordlists
+  - seclists      # ships rockyou.txt under /usr/share/seclists
