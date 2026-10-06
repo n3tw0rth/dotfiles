@@ -38,7 +38,7 @@ map(
 )
 
 map("n", "-", "<CMD>Oil<CR>", { desc = "Plugin Open parent directory" })
-map("n", "_", "<CMD>Scrub<CR>", { desc = "Plugin Run Scrub" })
+vim.keymap.set("n", "_", "<CMD>Keeper<CR>", { desc = "Open Keeper" })
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Plugin Enter ZenMode" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -57,5 +57,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
-vim.keymap.set({'n', 'x', 'o'}, 's', '<Plug>(leap)')
-vim.keymap.set('n',             'S', '<Plug>(leap-from-window)')
+vim.keymap.set({ "n", "x", "o" }, "s", "<Plug>(leap)")
+vim.keymap.set("n", "S", "<Plug>(leap-from-window)")

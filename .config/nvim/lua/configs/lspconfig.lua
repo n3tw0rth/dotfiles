@@ -35,7 +35,8 @@ local servers = {
       },
     },
   },
-  harper_ls = {}
+  harper_ls = {},
+  prismals = {},
 }
 
 for name, opts in pairs(servers) do
