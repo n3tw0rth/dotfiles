@@ -6,12 +6,12 @@
   [[default]]
     background_darkness = 0.95
     background_type = transparent
-    font = JetBrainsMono Nerd Font 10
+    font = IosevkaTerm Nerd Font 11
     show_titlebar = False
     scrollbar_position = hidden
     use_system_font = False
   [[slides]]
-    font = JetBrainsMono Nerd Font Bold 20
+    font = IosevkaTerm Nerd Font Bold 20
     show_titlebar = False
     scrollbar_position = hidden
     use_system_font = False
