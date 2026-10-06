@@ -38,7 +38,7 @@ map(
 )
 
 map("n", "-", "<CMD>Oil<CR>", { desc = "Plugin Open parent directory" })
-map("n", "_", "<CMD>Scrub<CR>", { desc = "Plugin Run Scrub" })
+map("n", "_", "<CMD>Keeper<CR>", { desc = "Plugin Run Scrub" })
 map("n", "<leader>z", ":ZenMode<CR>", { desc = "Plugin Enter ZenMode" })
 
 vim.api.nvim_create_autocmd("LspAttach", {
