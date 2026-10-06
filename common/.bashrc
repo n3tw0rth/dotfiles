@@ -101,16 +101,12 @@ alias rg='rg --hidden'
 alias g='git'
 alias vi='nvim'
 alias lg='lazygit'
-alias notify='completion-notifier'
-alias terraform='notify -t approve,Enter terraform'
-alias j='jired'
+alias terraform='hark -t approve,Enter terraform'
 alias cr='cargo run'
 
 # to enable completions for git with the alias
 source /usr/share/bash-completion/completions/git
 __git_complete g __git_main
-
-alias lgit='lazygit'
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -341,3 +337,14 @@ if [[ ${BASH_VERSINFO[0]:-0} -eq 4 && ${BASH_VERSINFO[1]:-0} -ge 4 || ${BASH_VER
     \builtin complete -r zi &>/dev/null || \builtin true
 fi
 
+# functions
+# set the first argument passed to the IP env. to use with tools like rustscan, nmap
+exip() { export IP="$1"; }
+
+# combines mkdir and cd
+mkcd() {
+  [ -n "$1" ] || { echo "usage: mkcd <dir>" >&2; return 1; }
+  mkdir -p -- "$1" && cd -- "$1"
+}
+
+source /usr/share/nvm/init-nvm.sh
