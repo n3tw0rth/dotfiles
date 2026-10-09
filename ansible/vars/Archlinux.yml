@@ -12,6 +12,7 @@ packages:
   - keychain
   - terminator
   - fzf
+  - zk
   - aws-cli-v2
   - dbeaver
   - kubectl

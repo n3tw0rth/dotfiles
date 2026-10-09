@@ -81,6 +81,22 @@
             include: [lazygit]
             creates: /usr/local/bin/lazygit
 
+        - name: Get latest zk release
+          ansible.builtin.uri:
+            url: https://api.github.com/repos/zk-org/zk/releases/latest
+          register: zk_release
+
+        - name: Install zk
+          become: true
+          vars:
+            version: "{{ zk_release.json.tag_name }}"
+          ansible.builtin.unarchive:
+            src: "https://github.com/zk-org/zk/releases/download/{{ version }}/zk-{{ version }}-linux-{{ 'amd64' if arch == 'x86_64' else 'arm64' }}.tar.gz"
+            remote_src: true
+            dest: /usr/local/bin
+            include: [zk]
+            creates: /usr/local/bin/zk
+
     - name: Build i3 extras from source
       when: wm == 'i3'
       block:
@@ -188,6 +204,13 @@
           ansible.builtin.systemd:
             name: sddm
             enabled: true
+
+    - name: Create the zk notebook
+      ansible.builtin.file:
+        path: "{{ ansible_env.HOME }}/notes/{{ item }}"
+        state: directory
+        mode: "0755"
+      loop: [.zk, daily]
 
     - name: Link dotfiles
       ansible.builtin.command: "{{ dotfiles }}/stow.sh {{ wm }}"

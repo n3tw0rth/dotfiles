@@ -173,6 +173,9 @@ if command -v kubectl > /dev/null; then
     complete -o default -F __start_kubectl k
 fi
 
+# zk
+export ZK_NOTEBOOK_DIR="$HOME/notes"
+
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
