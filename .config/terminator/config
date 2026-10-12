@@ -6,7 +6,7 @@
   [[default]]
     background_darkness = 0.95
     background_type = transparent
-    font = IosevkaTerm Nerd Font 11
+    font = IosevkaTerm Nerd Font 12
     show_titlebar = False
     scrollbar_position = hidden
     use_system_font = False

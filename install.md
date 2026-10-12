@@ -6,6 +6,7 @@ lazygit
 imagemagick
 derailed/k9s/k9s
 ripgrep
+zk
 
 i3-wm
 suckless-tools
