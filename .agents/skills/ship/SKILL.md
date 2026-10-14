@@ -25,3 +25,4 @@ You never commit, push, or open pull requests. You prepare everything so the use
    - `git add` with explicit paths, then `git commit` with the message.
    - `git push -u origin <branch>`.
    - The PR link. For an Azure DevOps remote (`git@ssh.dev.azure.com:v3/<org>/<project>/<repo>` or `https://dev.azure.com/<org>/<project>/_git/<repo>`) that is `https://dev.azure.com/<org>/<project>/_git/<repo>/pullrequestcreate?sourceRef=<branch>&targetRef=<target>`. For other hosts, use the usual compare or new-PR URL.
+7. **Record.** Run /zk-ticket so the ticket's zettelkasten note gets this branch, the decisions, the PR link, and a log line.

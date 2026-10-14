@@ -27,6 +27,16 @@ filename = "{{#if extra.platform}}{{slug extra.platform}}-{{/if}}{{slug title}}"
 extension = "md"
 template = "writeup.md"
 
+# One note per ticket, named by its key (tickets/ABC-123.md) so agents can find
+# and update it; they write through ~/.agents/skills/zk-ticket/ticket-note.sh.
+[group.tickets]
+paths = ["tickets"]
+
+[group.tickets.note]
+filename = "{{extra.ticket}}"
+extension = "md"
+template = "ticket.md"
+
 [format.markdown]
 link-format = "wiki"
 hashtags = true
@@ -53,3 +63,7 @@ daily = "mkdir -p \"$ZK_NOTEBOOK_DIR/daily\" && zk new --no-input \"$ZK_NOTEBOOK
 # zk wu <name> [platform] [type] [difficulty]  e.g. zk wu Lame hackthebox machine easy
 wu = "mkdir -p \"$ZK_NOTEBOOK_DIR/writeups\" && zk new \"$ZK_NOTEBOOK_DIR/writeups\" --title \"$1\" --extra platform=\"$2\",type=\"$3\",difficulty=\"$4\""
 recent = "zk edit --sort created- --created-after 'last two weeks' --interactive"
+# zk ticket <KEY> [title]  open a ticket's note, creating it if needed  e.g. zk ticket ABC-123 Fix login
+ticket = 'key=$(printf %s "$1" | tr a-z A-Z); shift; f="$ZK_NOTEBOOK_DIR/tickets/$key.md"; if [ -f "$f" ]; then zk edit "$f"; else mkdir -p "$ZK_NOTEBOOK_DIR/tickets" && zk new "$ZK_NOTEBOOK_DIR/tickets" --title "$key${*:+ — $*}" --extra ticket="$key"; fi'
+# zk tickets [filters]  list ticket notes, most recently changed first
+tickets = "zk list --tag ticket --sort modified- --format '{{title}}' $@"

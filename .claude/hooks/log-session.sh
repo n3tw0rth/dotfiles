@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Logs one line per session to <cwd>/.claude-sessions (tab-separated):
+# Logs one line per session to <session start dir>/.agent-sessions (tab-separated):
 #   date time  session_id  ticket  branch  summary  agent
 # Runs for Claude Code and Devin CLI (Devin loads hooks from ~/.claude/settings.json).
 # SessionStart appends the line; UserPromptSubmit fills in the summary from the first prompt.
@@ -18,8 +18,20 @@ IFS=$'\x1f' read -r event sid dir prompt agent < <(
 )
 # Devin's payload has no cwd.
 dir=${dir:-${DEVIN_PROJECT_DIR:-$PWD}}
-[ -n "${sid:-}" ] && [ -d "$dir" ] || exit 0
-log="$dir/.claude-sessions"
+[ -n "${sid:-}" ] || exit 0
+# Pin each session to the directory it started in: the cwd drifts when the agent runs cd.
+state=${XDG_STATE_HOME:-$HOME/.local/state}/agent-sessions
+mkdir -p "$state" 2>/dev/null || exit 0
+pin="$state/${sid//\//_}"
+if [ -s "$pin" ]; then
+  dir=$(cat "$pin")
+else
+  printf '%s\n' "$dir" > "$pin"
+  # Pins only matter while a session can still be resumed.
+  find "$state" -type f -mtime +60 -delete 2>/dev/null
+fi
+[ -d "$dir" ] || exit 0
+log="$dir/.agent-sessions"
 
 ticket_from() {
   local t
