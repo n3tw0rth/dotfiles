@@ -22,6 +22,7 @@ Apps and Tools
 - docker
 - postman
 - radare
+- claude code, devin cli - AI coding agents; shared config in .claude/ and .agents/skills/
 
 
 
