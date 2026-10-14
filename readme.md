@@ -23,7 +23,8 @@ to relink without installing anything:
 The repo is split into stow packages; ./stow.sh links `common` plus the
 package for the setup, and removes leftover links from the other one:
 
-- common/: shell, tmux, git, nvim, starship, terminator (every setup)
+- common/: shell, tmux, git, nvim, starship, terminator, claude code + devin
+           cli config (every setup)
 - sway/:   Arch + sway (Wayland) - .config/sway
 - i3/:     Debian + i3 (X11) - .config/i3, i3blocks, polybar, picom,
            xinputconfig.sh
@@ -67,6 +68,7 @@ Apps and Tools
 - docker
 - postman
 - radare
+- claude code, devin cli - AI coding agents; shared config in common/.claude/ and common/.agents/skills/
 
 
 

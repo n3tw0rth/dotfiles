@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(git status*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git show*)",
+      "Bash(npm test*)",
+      "Bash(npm run lint*)",
+      "Bash(npm run format:check*)",
+      "Bash(npx vitest *)"
+    ],
+    "deny": [
+      "Read(//**/.env)",
+      "Read(//**/*.tfstate)",
+      "Read(//**/*.tfstate.backup)",
+      "Read(//**/*.tfvars)",
+      "Read(//**/*.tfvars.json)",
+      "Read(//**/.terraform/**)",
+      "Read(//**/.npmrc)",
+      "Read(//**/*.pem)",
+      "Read(~/.ssh/**)",
+      "Read(//**/.aws/**)",
+      "Read(~/.kube/**)",
+      "Read(~/.azure/**)",
+      "Read(~/.config/gcloud/**)",
+      "Bash(git commit *)",
+      "Bash(git commit-tree *)",
+      "Bash(git -C * commit *)",
+      "Bash(git push *)",
+      "Bash(git -C * push *)",
+      "Bash(gh pr create *)",
+      "Bash(az repos pr create *)",
+      "Bash(az *)",
+      "Bash(gcloud *)",
+      "Bash(aws *)",
+      "Bash(kubectl *)",
+      "Bash(helm *)",
+      "Bash(terraform *)",
+      "Bash(terragrunt *)",
+      "Bash(eksctl *)"
+    ],
+    "blockReadsOutsideWorkingDirectories": true,
+    "additionalDirectories": [
+      "/home/theekshana/surge/work/phg"
+    ]
+  },
+  "model": "opus",
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.claude/hooks/log-session.sh\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.claude/hooks/log-session.sh\""
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "^(Bash|Read|Edit|Write|MultiEdit|NotebookEdit|Grep|Glob|exec|read|edit|write|apply_patch|grep|glob)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.claude/hooks/guard.sh\""
+          }
+        ]
+      }
+    ]
+  },
+  "enabledPlugins": {
+    "figma@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
+  },
+  "effortLevel": "xhigh",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
+    }
+  },
+  "theme": "dark-daltonized",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
+}

@@ -1,0 +1,6 @@
+.claude-sessions
+.claude/
+.docs/
+CLAUDE.local.md
+AGENTS.local.md
+.devin/
