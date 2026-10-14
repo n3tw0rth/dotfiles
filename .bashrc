@@ -107,6 +107,9 @@ alias notify='completion-notifier'
 alias terraform='notify -t approve,Enter terraform'
 alias j='jired'
 alias cr='cargo run'
+alias zl='zk list -i'
+alias ze='zk edit -i'
+alias getip='ip=$(curl -s ipinfo.io/ip) && echo "$ip" && if [ -n "$WAYLAND_DISPLAY" ]; then printf %s "$ip" | wl-copy; else printf %s "$ip" | xclip -selection clipboard; fi'
 
 # to enable completions for git with the alias
 source /usr/share/bash-completion/completions/git
