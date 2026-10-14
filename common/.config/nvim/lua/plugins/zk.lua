@@ -8,6 +8,7 @@ return {
     { "<leader>kw", "<Cmd>ZkNew { dir = 'writeups', title = vim.fn.input('Writeup: '), extra = { platform = vim.fn.input('Platform: ') } }<CR>", desc = "Zk Writeup" },
     { "<leader>ko", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", desc = "Zk Open notes" },
     { "<leader>kt", "<Cmd>ZkTags<CR>", desc = "Zk Browse tags" },
+    { "<leader>kj", "<Cmd>ZkNotes { tags = { 'ticket' }, sort = { 'modified' } }<CR>", desc = "Zk Ticket notes" },
     { "<leader>kf", "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>", desc = "Zk Search notes" },
     { "<leader>kf", ":'<,'>ZkMatch<CR>", mode = "v", desc = "Zk Search selection" },
     { "<leader>kb", "<Cmd>ZkBacklinks<CR>", desc = "Zk Backlinks" },
