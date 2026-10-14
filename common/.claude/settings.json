@@ -42,10 +42,7 @@
       "Bash(terragrunt *)",
       "Bash(eksctl *)"
     ],
-    "blockReadsOutsideWorkingDirectories": true,
-    "additionalDirectories": [
-      "/home/theekshana/surge/work/phg"
-    ]
+    "blockReadsOutsideWorkingDirectories": true
   },
   "model": "opus",
   "hooks": {

@@ -104,9 +104,15 @@ section() {
 
 has() { grep -qF -- "$1" "$note"; }
 
-add_branch() { # <branch> <first-seen date>
-  [ -n "$1" ] || return 0
-  has "- $repo: \`$1\`" || section Branches "- $repo: \`$1\` (first seen $2)"
+# Succeeds when the branch name carries the key as a whole token
+# (ABC-1 matches feature/ABC-1-x but not ABC-12345-x).
+has_key() {
+  [[ ${1^^} =~ (^|[^A-Z0-9])$key([^0-9]|$) ]]
+}
+
+add_branch() { # <branch>
+  [ -n "$1" ] && [ "$1" != - ] || return 0
+  has "- $repo: \`$1\`" || section Branches "- $repo: \`$1\` (added $today)"
 }
 
 # Adds a tag to the frontmatter "tags: [...]" list.
@@ -124,24 +130,20 @@ add_tag() {
     { print }'
 }
 
-# Branches: earlier sessions first (chronological), then git, then the current one.
-if [ -n "$top" ] && [ -f "$top/.agent-sessions" ]; then
-  while IFS=$'\t' read -r day b; do
-    add_branch "$b" "$day"
-  done < <(awk -F'\t' -v k="$key" 'toupper($3) == k && $4 != "-" && !seen[$4]++ { print substr($1, 1, 10) "\t" $4 }' "$top/.agent-sessions")
-fi
+# Branches: from the session log (oldest first), then git, then the current one.
 if [ -n "$top" ]; then
   while IFS= read -r b; do
-    add_branch "$b" "$today"
+    has_key "$b" && add_branch "$b"
   done < <({
+    [ -f "$top/.agent-sessions" ] && cut -f2 "$top/.agent-sessions"
     git -C "$top" for-each-ref --format='%(refname:lstrip=2)' refs/heads
     git -C "$top" for-each-ref --format='%(refname:lstrip=3)' refs/remotes
-  } | grep -iF -- "$key" | grep -vx HEAD | awk '!seen[$0]++')
+  } | grep -vx HEAD | awk '!seen[$0]++')
 fi
 # The current branch counts only when named in the entry or when it carries the
 # key, so running this from e.g. `dev` after a merge does not record `dev`.
-if [ -n "$explicit_branch" ] || [[ ${branch^^} == *"$key"* ]]; then
-  add_branch "$branch" "$today"
+if [ -n "$explicit_branch" ] || has_key "$branch"; then
+  add_branch "$branch"
 fi
 
 [ "$repo" = unknown ] || add_tag "$repo"

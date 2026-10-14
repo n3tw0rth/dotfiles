@@ -19,4 +19,4 @@ argument-hint: "[what the next agent should do]"
    - Devin: `devin -- "Continue <KEY>: read .docs/<file>.md and do the Next steps."`
    - Claude Code: `claude "Continue <KEY>: read .docs/<file>.md and do the Next steps."`
 
-   To resume this exact session instead, the user can find its id in `.agent-sessions` at the repo root and run `claude -r <id>` or `devin -r <id>`, as the agent column shows.
+   To resume this exact session instead, the user can find its id in `.agent-sessions` at the repo root (one `session-id<TAB>branch` line per session and branch). They run `claude -r <id>` for UUID ids, or `devin -r <id>` for word-pair ids such as `saber-melon`.
