@@ -1,6 +1,6 @@
 ---
 name: plain-writing
-description: Write and review prose for human readers (docs, READMEs, PR descriptions, commit messages, design notes, explanations) the way a senior engineer writes to a colleague they respect, then scan it for AI-writing tells. Use when drafting or editing any doc or message a person will read, or when the user asks to make text plainer or sound less like AI. For text an agent will parse, use asd-ste100 instead.
+description: Write and review new prose for human readers (docs, READMEs, PR descriptions, commit messages, design notes, explanations) the way a senior engineer writes to a colleague they respect, then scan it for AI-writing tells. Use when drafting a doc or message a person will read. To clean up text that already exists, use anti-slop; for text an agent will parse, use asd-ste100.
 ---
 
 Write like a senior engineer explaining something to a colleague they respect: plain, specific, a little opinionated, and finished once the point is made.
