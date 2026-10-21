@@ -81,8 +81,7 @@
   "enabledPlugins": {
     "figma@claude-plugins-official": true,
     "rust-analyzer-lsp@claude-plugins-official": true,
-    "ponytail@synced": false,
-    "mattpocock-skills@claude-plugins-official": true
+    "ponytail@synced": false
   },
   "effortLevel": "xhigh",
   "modelSettings": {
