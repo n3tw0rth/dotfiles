@@ -50,6 +50,7 @@ Apps and Tools
     - mod key is Alt, bar is swaybar styled like the nix-config waybar
       (status from .config/sway/status.py)
     - grim, slurp, wl-clipboard, jq - screenshots
+    - wlsunset - night light (warm screen 18:30-06:30)
     - ttf-iosevkaterm-nerd - bar font
 - i3-lock
 - betterlockscreen
