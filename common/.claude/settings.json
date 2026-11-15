@@ -44,7 +44,7 @@
     ],
     "blockReadsOutsideWorkingDirectories": true
   },
-  "model": "opus",
+  "model": "fable",
   "hooks": {
     "SessionStart": [
       {

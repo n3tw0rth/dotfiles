@@ -9,6 +9,8 @@ return {
     { "<leader>ko", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", desc = "Zk Open notes" },
     { "<leader>kt", "<Cmd>ZkTags<CR>", desc = "Zk Browse tags" },
     { "<leader>kj", "<Cmd>ZkNotes { tags = { 'ticket' }, sort = { 'modified' } }<CR>", desc = "Zk Ticket notes" },
+    { "<leader>ks", "<Cmd>ZkNotes { tags = { 'company' }, sort = { 'modified' } }<CR>", desc = "Zk Stock company notes" },
+    { "<leader>kr", "<Cmd>ZkNotes { tags = { 'decision', 'open' }, sort = { 'created' } }<CR>", desc = "Zk Open stock decisions" },
     { "<leader>kf", "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>", desc = "Zk Search notes" },
     { "<leader>kf", ":'<,'>ZkMatch<CR>", mode = "v", desc = "Zk Search selection" },
     { "<leader>kb", "<Cmd>ZkBacklinks<CR>", desc = "Zk Backlinks" },

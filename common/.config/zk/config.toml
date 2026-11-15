@@ -37,6 +37,31 @@ filename = "{{extra.ticket}}"
 extension = "md"
 template = "ticket.md"
 
+# Stock research (Colombo Stock Exchange): a hub note per company named by its
+# symbol (stocks/companies/JKH.md), a decision journal, and atomic research
+# notes. Aliases and agents create them through ~/.agents/skills/zk-stock/stock-note.sh.
+[group.stock-companies]
+paths = ["stocks/companies"]
+
+[group.stock-companies.note]
+filename = "{{extra.symbol}}"
+extension = "md"
+template = "stock-company.md"
+
+[group.stock-decisions]
+paths = ["stocks/decisions"]
+
+[group.stock-decisions.note]
+filename = "{{format-date now '%Y-%m-%d'}}-{{slug extra.symbol}}-{{extra.action}}"
+extension = "md"
+template = "stock-decision.md"
+
+[group.stock-research]
+paths = ["stocks/research"]
+
+[group.stock-research.note]
+template = "stock-research.md"
+
 [format.markdown]
 link-format = "wiki"
 hashtags = true
@@ -67,3 +92,15 @@ recent = "zk edit --sort created- --created-after 'last two weeks' --interactive
 ticket = 'key=$(printf %s "$1" | tr a-z A-Z); shift; f="$ZK_NOTEBOOK_DIR/tickets/$key.md"; if [ -f "$f" ]; then zk edit "$f"; else mkdir -p "$ZK_NOTEBOOK_DIR/tickets" && zk new "$ZK_NOTEBOOK_DIR/tickets" --title "$key${*:+ — $*}" --extra ticket="$key"; fi'
 # zk tickets [filters]  list ticket notes, most recently changed first
 tickets = "zk list --tag ticket --sort modified- --format '{{title}}' $@"
+# zk stock <SYMBOL> [name]  open a company's note, creating it if needed  e.g. zk stock JKH
+stock = 'f=$(~/.agents/skills/zk-stock/stock-note.sh company "$@") && zk edit "$f"'
+# zk decide <SYMBOL> <buy|add|trim|sell|hold|pass> [price]  write a decision note; the price defaults to the last trade
+decide = 'f=$(~/.agents/skills/zk-stock/stock-note.sh decision "$@") && zk edit "$f"'
+# zk research <filing|news|insight|sector|macro> <SYMBOLS|-> <title>  e.g. zk research filing JKH,HAYL Q2 margins
+research = 'f=$(~/.agents/skills/zk-stock/stock-note.sh research "$@") && zk edit "$f"'
+# zk stocks [filters]  list company notes  e.g. zk stocks --tag holding
+stocks = "zk list --tag company --sort modified- --format '{{title}}  ({{join tags \" \"}})' $@"
+# zk reviews  open decisions whose review date has come
+reviews = '~/.agents/skills/zk-stock/stock-note.sh due'
+# zk quote <SYMBOL>  today's price line from cse.lk
+quote = '~/.agents/skills/zk-stock/stock-note.sh quote "$@"'
