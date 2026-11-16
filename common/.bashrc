@@ -105,6 +105,7 @@ alias terraform='hark -t approve,Enter terraform'
 alias cr='cargo run'
 alias zl='zk list -i'
 alias ze='zk edit -i'
+alias sss='systemctl suspend'
 alias getip='ip=$(curl -s ipinfo.io/ip) && echo "$ip" && if [ -n "$WAYLAND_DISPLAY" ]; then printf %s "$ip" | wl-copy; else printf %s "$ip" | xclip -selection clipboard; fi'
 
 # to enable completions for git with the alias
